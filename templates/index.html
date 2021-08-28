@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block main %}
+    <form action="/set" method="post">
+        <div class="row g-3 mb-4">
+            <div class="col-sm-9">
+                <input autocomplete="off" autofocus class="form-control" name="token" placeholder="LINE token" type="text">
+            </div>
+            <div class="col-sm">
+                <button class="btn btn-primary form-control" type="submit">Set LINE token</button>
+            </div>
+        </div>
+    </form>
+
+    <form action="/" method="post">
+        <div class="row g-3 mb-5">
+            <div class="col-sm-6">
+                <input autocomplete="off" autofocus class="form-control" name="housework_name" placeholder="Housework" type="text">
+            </div>
+            <div class="col-sm-2">
+                <input class="form-control" name="interval" placeholder="Interval" type="number" min="0">
+            </div>
+            <div class="col-sm">
+                <select name="day_week_month" size="1" class="form-control">
+                    <option value="d">day</option>
+                    <option value="w">week</option>
+                    <option value="m">month</option>
+                </select>
+            </div>
+            <div class="col-sm">
+                <button class="btn btn-primary form-control" type="submit">Register</button>
+            </div>
+        </div>
+    </form>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Housework</th>
+                <th>Interval</th>
+                <th>Remaining days</th>
+            </tr>
+        </thead>
+            {% for housework_datum in housework_data %}
+            <tr>
+                <th>{{ housework_datum.housework_name }}</th>
+                <th>{{ housework_datum.interval_display }} </th>
+                <th class="remaining_days">{{ housework_datum.remaining_days }}</th>
+                <th><a href="{{ url_for('delete', delete_id=housework_datum.id) }}">Delete</a></th>
+            </tr>
+            {% endfor %}
+        <troot>
+
+        </troot>
+    </table>
+{% endblock %}
