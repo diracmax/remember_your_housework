@@ -74,18 +74,16 @@ pip install Flask
 
 ##### Usage
 
-In the directory "project", do the following.
+```bash
+docker-compose up
+```
 
 When you access the indicated URL, the application will display.
-
-```bash
-flask run
-```
 
 Always run /project/notification.py in order to notify.
 
 ```bash
-python notification.py
+python3 notification.py
 ```
 
 First, you need to register your LINE access token. If the token is set correctly, LINE will notify you of that.

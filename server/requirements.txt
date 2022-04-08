@@ -1,0 +1,6 @@
+cs50
+flask
+python-dotenv
+flake8
+requests
+schedule
